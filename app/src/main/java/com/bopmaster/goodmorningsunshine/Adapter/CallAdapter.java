@@ -6,6 +6,8 @@ import com.bopmaster.goodmorningsunshine.apiCall.QuotdClient;
 import com.bopmaster.goodmorningsunshine.apiCall.QuoteOfTheDay;
 import com.bopmaster.goodmorningsunshine.apiCall.RetrofitRequest;
 
+import java.util.List;
+
 import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,20 +29,20 @@ public class CallAdapter {
 
     public void getPost() {
 
-        Call<QuoteOfTheDay> call = client.getQuote();
-        call.enqueue(new Callback<QuoteOfTheDay>() {
+        Call<List<QuoteOfTheDay>> call = client.getQuote();
+        call.enqueue(new Callback<List<QuoteOfTheDay>>() {
             @Override
-            public void onResponse(Call<QuoteOfTheDay> call, Response<QuoteOfTheDay> response) {
+            public void onResponse(Call<List<QuoteOfTheDay>> call, Response<List<QuoteOfTheDay>> response) {
                 if (response.code() == 200 && response.body() != null) {
-                    Log.e("#### dcm response", response.body().getContent());
+                    Log.e("#### dcm response", response.body().get(0).getContent());
                 } else {
                     Log.e("#### dcm error", String.valueOf(response.code()) + response.message());
                 }
             }
 
             @Override
-            public void onFailure(Call<QuoteOfTheDay> call, Throwable t) {
-                Log.e("#### dcm fail", " error" + t.toString());
+            public void onFailure(Call<List<QuoteOfTheDay>> call, Throwable t) {
+
             }
         });
     }

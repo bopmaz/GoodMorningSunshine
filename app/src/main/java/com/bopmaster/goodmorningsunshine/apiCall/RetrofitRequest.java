@@ -23,8 +23,8 @@ public class RetrofitRequest {
     static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
     HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 
-    public RetrofitRequest() {
-        this.init();
+    static {
+        init();
     }
 
     public static Retrofit retrofit() {
