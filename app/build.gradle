@@ -26,5 +26,8 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    // For animated GIF support
+    compile 'com.facebook.fresco:animated-gif:1.2.0'
+    compile 'com.facebook.fresco:fresco:1.2.0'
     testCompile 'junit:junit:4.12'
 }
